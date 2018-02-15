@@ -32,14 +32,18 @@ class App extends Component {
       case true:
         return (
           <CardSection>
-            <Button buttonText={'Logout'} />
+            <Button onPress={() => firebase.auth().signOut()} buttonText={'Logout'} />
           </ CardSection>
         );
       case false:
         return <LoginForm />;
       default:
         return(
+        <View style={{
+          marginTop: 90
+        }}>
           <Spinner/>
+        </View>
       );
     }
 
@@ -49,12 +53,10 @@ class App extends Component {
   render () {
     return (
       <View>
-        <View style={{ marginBottom: 30 }}>
+        <View>
           <Header headerText="Authentication" />
         </View>
-        <View>
           {this.renderContent()}
-        </View>
       </View>  
       );
   };
