@@ -10,7 +10,7 @@ UIManager.setLayoutAnimationEnabledExperimental
 
 class ListItem extends Component {
   componentWillUpdate(){
-    LayoutAnimation.spring();
+    LayoutAnimation.easeInEaseOut();
   }
 
   renderDescription() {
@@ -31,9 +31,7 @@ class ListItem extends Component {
     const { id, title } = this.props.library;
 
     return(
-      <TouchableWithoutFeedback
-        onPress={() => this.props.selectLibrary(id)}
-      >
+      <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
         <View>
           <CardSection>
             <Text style={titleStyle}>{title}</Text>
@@ -54,7 +52,6 @@ const styles = {
 
 const mapStateToProps = (state, ownProps) => {
   const expanded = state.selectedLibraryId === ownProps.library.id;
-
   return { expanded };
 };
 
